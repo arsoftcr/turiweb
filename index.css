@@ -1,0 +1,177 @@
+
+::placeholder { color: #016367; }
+
+input {
+  color: #44af92 !important;
+}
+
+input:focus {
+  border-bottom: 1px solid #44af92 !important;
+  box-shadow: 0 1px 0 0 #44af92 !important;
+}
+
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    /* grid-gap: 1vh; */
+    grid-template-rows: repeat(5,20vh);
+  }
+  .menuside{
+      grid-column: 1/4;
+      grid-row: 1/8;
+      background: #44af92;
+      background: linear-gradient(90deg, #44af92 0%, #016367  100%);
+
+      display: grid;
+      text-align: center;
+      align-items: center;
+      padding: 10px;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 1vh;
+      grid-template-rows: repeat(8,3vh);
+
+  }
+  .foto{
+      grid-row: 1;
+      background-color: seagreen;
+      border-radius: 15vh;
+
+      height: 10vh;
+      padding: 2vh;
+      margin-left: 38%;
+      margin-top: 5%;
+      min-width: 5vh;
+      max-width:10vh;
+   
+
+border-color: seashell;
+      border-width: 1vh;
+  }
+  .items1{
+      grid-row: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+  }
+  .items2{
+    grid-row: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.items3{ grid-row: 6;
+       display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.items4{ grid-row: 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.waves-effect.waves-light.btn-small{
+
+  width: 100%;
+  height: 8vh;
+  font-size: 4vh;
+  
+  background: #44af92;
+  background: linear-gradient(90deg,#44af92 0%, #016367  100%);
+  text-align: center;
+
+
+}
+
+.waves-effect.waves-light.btn{
+
+  background-color:  #016367  ;
+}
+  
+
+span{
+  color: #016367 ;
+}
+
+
+
+/* modal */
+#mod {
+   display: none;
+ margin-top: 20%;
+ margin-left: 40%;
+  position: absolute;
+  min-width: 10vh;
+  min-height: 10vh;
+  z-index: 4;
+}
+
+#efect {
+  display: none;
+  position: absolute;
+  min-width: 20vh;
+  z-index: 1;
+  background: black;
+  min-height: 20vh;
+}
+
+
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}

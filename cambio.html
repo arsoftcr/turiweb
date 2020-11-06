@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Cambio de password</title>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    <link  rel="icon"   href="https://genfavicon.com/tmp/icon_4070c4ca460daf6fe7c1551d18ea5b71.ico" type="image/png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <link rel="stylesheet" href="./cambio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css" integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g==" crossorigin="anonymous" />
+ 
+</head>
+<body>
+    <div class="grid-container">
+        <div class="imagen">
+
+            <img src="./img/App.png" alt="" srcset="" height="120" width="120">
+
+        </div>
+        <div class="correobox">
+
+            <label for="corr" style="font-size: 7vh;">Ingrese su correo electrónico</label>
+
+            <input 
+            name="corr" type="email" placeholder="Correo electrónico" id="emailbox" class="validate">
+        
+            <button id="envio" style="  font-size: 4vh;
+  
+            background: rgb(28,165,234);
+            background: linear-gradient(90deg, rgba(28,165,234,1) 0%, rgba(0,30,175,1) 100%);" class="btn">Cambiar contraseña</button>
+        </div>
+      </div>
+  
+    <script src="./cambio.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Source+Sans+Pro:wght@200&display=swap');
+html, body, .grid-container { height: 100%; margin: 0; }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+
+  margin-left: 42vh;
+  margin-right: 42vh;
+  grid-template-areas:
+    ". . . . . . . . . . ."
+    ". . . . . . . . . . ."
+    ". . . . . . . . . . ."
+    ". . nombre nombre nombre nombre nombre nombre nombre . ."
+    ". . correo correo correo correo correo correo correo . ."
+    ". . contraseña contraseña contraseña contraseña contraseña contraseña contraseña . ."
+    ". . registrar registrar registrar registrar registrar registrar registrar . ."
+    ". . . . . . . . . . ."
+    ". . . . . . . . . . ."
+    ". . . . . . . . . . ."
+    ". . . . . . . . . . .";
+    font-family:'Source Sans Pro', sans-serif;
+}
+
+.registrar { grid-area: registrar; }
+.registrar i,.nombre i,.correo i,.contraseña i{
+    color: #44af92;
+}
+
+.registrar span,.nombre span,.correo span,.contraseña span{
+    color: #016367;
+}
+
+.nombre { grid-area: nombre; }
+
+.correo { grid-area: correo; }
+
+.contraseña { grid-area: contraseña; }
+
+
+/* For presentation only, no need to copy the code below */
+.grid-container * {
+
+  position: relative;
+}
+
+.grid-container *:after {
+ 
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+/* label focus color */
+input[type=text]:focus + label {
+    color: #44af92 !important;
+}
+/* label underline focus color */
+input[type=text]:focus {
+    border-bottom: 1px solid  #44af92 !important;
+    box-shadow: 0 1px 0 0 #44af92 !important;
+}
+input[type=text] {
+    border-bottom: 1px solid  #44af92 !important;
+    box-shadow: 0 1px 0 0 #44af92 !important;
+}
+
+/* label focus color */
+input[type=email]:focus + label {
+    color: #44af92 !important;
+}
+/* label underline focus color */
+input[type=email]:focus {
+    border-bottom: 1px solid  #44af92 !important;
+    box-shadow: 0 1px 0 0 #44af92 !important;
+}
+input[type=email] {
+    border-bottom: 1px solid  #44af92 !important;
+    box-shadow: 0 1px 0 0 #44af92 !important;
+}
+
+
+/* label focus color */
+input[type=password]:focus + label {
+    color: #44af92  !important;
+}
+/* label underline focus color */
+input[type=password]:focus {
+    border-bottom: 1px solid #44af92 !important;
+    box-shadow: 0 1px 0 0 #44af92 !important;
+}
+input[type=password] {
+    border-bottom: 1px solid #44af92 !important;
+    box-shadow: 0 1px 0 0 #44af92 !important;
+}

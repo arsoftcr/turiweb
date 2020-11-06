@@ -1,0 +1,45 @@
+html, body, .grid-container { height: 100%; margin: 0; }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . . . . . . . . . ."
+    ". imagen imagen imagen imagen imagen imagen imagen imagen imagen ."
+    ". imagen imagen imagen imagen imagen imagen imagen imagen imagen ."
+    ". . . . . . . . . . ."
+    ". . correobox correobox correobox correobox correobox correobox . . ."
+    ". . . . . . . . . . ."
+    ". . . . . . . . . . ."
+    ". . . . . . . . . . ."
+    ". . . . . . . . . . ."
+    ". . . . . . . . . . ."
+    ". . . . . . . . . . .";
+}
+
+.imagen { grid-area: imagen; }
+
+.correobox { grid-area: correobox;margin-right: 22vh; }
+
+
+
+
+.grid-container *:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+::placeholder { color: #001EAF; }
+
+input {
+  color: #1CA5EA !important;
+}
+
+input:focus {
+  border-bottom: 1px solid #1CA5EA !important;
+  box-shadow: 0 1px 0 0 #1CA5EA !important;
+}

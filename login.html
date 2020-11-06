@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css" integrity="sha512-ISS7cAi1PEhQ8jnbJpJZMd29NlhNj4AWYyLOSp2CE/CsHxTCu+r+t0D2yoJudVrd0/8fTVPUVDzY5Tvli75u/g==" crossorigin="anonymous" />
+    
+    <link rel="stylesheet" href="./login.css">
+
+  
+   
+</head>
+<body>
+
+    <div id="mod">
+
+        <div id="efect">
+
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="https://assets7.lottiefiles.com/packages/lf20_5KG9yE.json"  background="#21A3B5"  speed="1"  style="width: 600px; height: 430px;"  loop  autoplay></lottie-player>
+        </div>
+    </div>
+
+
+    <div class="grid-container">
+        <div class="correo">
+            
+            <input type="email" name="correo" 
+            autocomplete="email" 
+            id="correo" placeholder="Correo electrónico" class="validate">
+            
+        </div>
+        <div class="password">
+            
+            <input type="password" 
+            
+            name="pass" id="password" placeholder="Contraseña" class="validate">
+            
+        </div>
+        <div class="recordar">
+            <p>
+                <label>
+                    <input type="checkbox" id="record"/>
+                    <span>Recordar</span>
+                </label>
+            </p>
+        </div>
+        <div class="iniciarbtn">
+            
+            <button class="waves-effect waves-light btn-small" 
+            id="btnconsultaLic">Iniciar</button> 
+
+        </div>
+        <div class="cambio">
+            <a href="cambio.html">Olvidó su contraseña?</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a  href="registro.html" style="text-decoration: underline;">Registrarme</a>
+        </div>
+        <div class="imgsoftland">
+            
+            <h2>Bienvenido a Turi-CR</h2>
+            
+        </div>
+    </div>
+
+    <script src="./login.js"></script>
+</body>
+</html>
