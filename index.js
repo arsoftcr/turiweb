@@ -170,7 +170,13 @@ var htmlOferta = `
 
 
 btncerrar.addEventListener('click', () => {
-    sesion();
+
+    localStorage.setItem('correoUser', '0');
+    localStorage.setItem('passUser', '0');
+
+    localStorage.removeItem('idNegocio');
+    localStorage.removeItem(`token`);
+    location.href = 'login.html'
 })
 
 
@@ -183,8 +189,8 @@ btncreaNegocio.addEventListener('click', (e) => {
     container.style.gridRow = '2/7';
 
 
-    let patch='0';
-    let stringyfi='';
+    let patch = '0';
+    let stringyfi = '';
     let tituloid = document.getElementById('tituloid');
     let subtituloid = document.getElementById('subtituloid');
     let textareaid = document.getElementById('textareaid');
@@ -196,7 +202,7 @@ btncreaNegocio.addEventListener('click', (e) => {
     if ((localStorage.getItem('idNegocio') ?? "").includes('id')) {
 
 
-         stringyfi = JSON.parse(localStorage.getItem('idNegocio'));
+        stringyfi = JSON.parse(localStorage.getItem('idNegocio'));
 
         tituloid.value = stringyfi[0].titulo;
         subtituloid.value = stringyfi[0].subtitulo;
@@ -204,18 +210,18 @@ btncreaNegocio.addEventListener('click', (e) => {
         telefonoid.value = stringyfi[0].telefono;
         linkid.value = stringyfi[0].link;
 
-        patch='1';
-    } 
+        patch = '1';
+    }
 
     negociobtn.addEventListener('click', async (e) => {
         e.preventDefault();
         e.stopPropagation();
-       
 
-        if (patch==='1') {
-            
+
+        if (patch === '1') {
+
             var raw = JSON.stringify({
-                "id":stringyfi[0].id,
+                "id": stringyfi[0].id,
                 "titulo": tituloid.value,
                 "subtitulo": subtituloid.value,
                 "descripcion": textareaid.value,
@@ -226,8 +232,9 @@ btncreaNegocio.addEventListener('click', (e) => {
             await patchPlace(raw);
 
         } else {
-        
+
             var raw = JSON.stringify({
+                "login": localStorage.getItem('correoUser'),
                 "titulo": tituloid.value,
                 "subtitulo": subtituloid.value,
                 "descripcion": textareaid.value,
@@ -275,14 +282,18 @@ btncreaImagenes.addEventListener('click', (e) => {
 
             fileReader.readAsDataURL(selectedFile);
 
-            fileReader.onload = (event) => {
+            fileReader.onload = async(event) => {
 
                 let data = event.target.result;
+                let databytes=data.replace(/^data:image\/[a-z]+;base64,/, "");
+                let nego=JSON.parse(localStorage.getItem('idNegocio'));
+                let id=nego[0].id;
+                await crearImagen(id,databytes);
+                
 
-                console.log(data);
             }
         } else {
-
+            this.mostrarMensaje('Debe  seleccionar una imagen  por favor', `warning`);
         }
 
     });
@@ -324,8 +335,7 @@ btncreaOfertas.addEventListener('click', () => {
 
 async function consultarPlace() {
     try {
-        modal.style.display = 'block';
-        efect.style.display = 'block';
+
 
         var myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${this.token}`);
@@ -336,7 +346,7 @@ async function consultarPlace() {
             redirect: 'follow'
         };
 
-        await fetch(`${this.url}/api/places/${localStorage.getItem('correoUser')}`, requestOptions)
+        await fetch(`${this.url}/web?correo=${localStorage.getItem('correoUser')}`, requestOptions)
             .then(response => response.text())
             .then(result => {
 
@@ -347,8 +357,6 @@ async function consultarPlace() {
                     let desparce = JSON.stringify(parse);
 
                     localStorage.setItem('idNegocio', desparce);
-                } else {
-                    location.href('login.html');
                 }
 
 
@@ -358,16 +366,14 @@ async function consultarPlace() {
         location.href('login.html');
     }
 
-    modal.style.display = 'none';
-    efect.style.display = 'none';
+
 }
 
 
 async function crearPlace(raw) {
     try {
 
-        modal.style.display = 'block';
-        efect.style.display = 'block';
+
         var myHeaders = new Headers();
 
         myHeaders.append("Authorization", `Bearer ${this.token}`);
@@ -380,30 +386,32 @@ async function crearPlace(raw) {
             redirect: 'follow'
         };
 
-        await fetch(`${this.url}/api/places/${localStorage.getItem('correoUser')}`, requestOptions)
+        await fetch(`${this.url}/api/places`, requestOptions)
             .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+            .then(result => {
+                console.log(result);
+                this.mostrarMensaje('realizado', `success`);
+            })
+            .catch(error => {
+                this.mostrarMensaje(error, `success`);
+            });
     } catch (error) {
         this.mostrarMensaje(error, `error`)
     }
 
-    modal.style.display = 'none';
-    efect.style.display = 'none';
+
 }
 
 
 
 async function patchPlace(raw) {
     try {
-        modal.style.display = 'block';
-        efect.style.display = 'block';
 
         var myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${this.token}`);
         myHeaders.append("Content-Type", "application/json");
-     
-       
+
+
         var requestOptions = {
             method: 'PATCH',
             headers: myHeaders,
@@ -411,17 +419,12 @@ async function patchPlace(raw) {
             redirect: 'follow'
         };
 
-       await fetch(`${this.url}/api/places`, requestOptions)
+        await fetch(`${this.url}/api/places`, requestOptions)
             .then(response => response.text())
-            .then(async(result) => {
+            .then(result => {
+                console.log(result);
+                this.mostrarMensaje('realizado', `success`);
 
-                if (result==="realizado") {
-                
-                    await consultarPlace();
-
-                    
-                }
- 
             })
             .catch(error => this.mostrarMensaje(error, `error`));
 
@@ -430,12 +433,40 @@ async function patchPlace(raw) {
         this.mostrarMensaje(error, `error`);
     }
 
-    modal.style.display = 'none';
-    efect.style.display = 'none';
+
 }
 
 
+async function crearImagen(id,data) {
+    try {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+     
+        var raw = JSON.stringify({
+            "id": id,
+            "data": data
+        });
 
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch("https://placescr.azurewebsites.net/api/Imagenes", requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                console.log(result);
+                this.mostrarMensaje('realizado', `success`);
+            })
+            .catch(error => {
+                this.mostrarMensaje(error, `error`);
+            });
+    } catch (error) {
+        this.mostrarMensaje(error, `error`);
+    }
+}
 
 
 async function mostrarMensaje(body, type) {

@@ -67,13 +67,12 @@ btnIniciar.addEventListener('click', async () => {
 async function pedirToken(user, pass) {
 
     try {
-        modal.style.display = 'block';
-        efect.style.display = 'block';
+  
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
     
         var urlencoded = new URLSearchParams();
-        urlencoded.append("correo", user);
+        urlencoded.append("correo", user.toLowerCase());
         urlencoded.append("contrasena", pass);
     
         var requestOptions = {
@@ -89,7 +88,7 @@ async function pedirToken(user, pass) {
                let  elToken=JSON.parse(result).access_token;
                 if (typeof elToken!==undefined) {
                     if (typeof elToken!== null) {
-                        localStorage.setItem('correoUser',user);
+                        localStorage.setItem('correoUser',user.toLowerCase());
                         localStorage.setItem('passUser',pass);
                         localStorage.setItem('token',elToken);
                         location.href='index.html';
@@ -105,8 +104,6 @@ async function pedirToken(user, pass) {
         this.mostrarMensaje(`No se lograron validar los credenciales, por favor revise los datos e intente de nuevo`, `error`);
     }
 
-    modal.style.display = 'none';
-    efect.style.display = 'none';
    
 }
 

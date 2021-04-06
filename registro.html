@@ -20,21 +20,23 @@
 <body>
     <div class="grid-container">
         <div class="registrar">
-            <a class="waves-effect waves-light btn-small" >Registrarme</a>
+            <a class="waves-effect waves-light btn-small" id="registrobtn">Registrarme</a>
         </div>
         <div class="nombre">
             <i class="fas fa-user-alt"><span>&nbsp;&nbsp;Nombre</span></i>
-            <input type="text" placeholder="Nombre" name="nombre" class="validate">
+            <input type="text" id="nombre" placeholder="Nombre" name="nombre" class="validate">
         </div>
         <div class="correo">
             <i class="fas fa-envelope"><span>&nbsp;&nbsp;Correo electrónico</span></i>&nbsp;&nbsp;
-            <input type="email" placeholder="Correo electrónico" name="nombre" class="validate">
+            <input type="email" id="email" placeholder="Correo electrónico" name="nombre" class="validate">
         </div>
         <div class="contraseña">
             <i class="fas fa-lock"><span>&nbsp;&nbsp;Contraseña</span></i>&nbsp;&nbsp;
-            <input type="password" placeholder="Contraseña" name="nombre" class="validate">
+            <input type="password" id="password" placeholder="Contraseña" name="nombre" class="validate">
         </div>
       </div>
+
+      <script src="./registro.js"></script>
 </body>
 </html>
 
